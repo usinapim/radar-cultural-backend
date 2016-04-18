@@ -1,0 +1,15 @@
+#easy admin
+easy_admin:
+    site_name: '<strong>Radar</strong> Cultural'
+    design:
+        brand_color: '#e66500'
+        menu:
+            - { label: 'Noticias', route: 'noticias_index' }
+            - 'CategoriaNoticia'
+            - 'CategoriaAgenda'
+            - 'Usuario'
+    entities:
+        CategoriaAgenda:
+            class: AppBundle\Entity\CategoriaAgenda
+        Usuario:
+            class: UsuariosBundle\Entity\Usuario

@@ -1,0 +1,7 @@
+app_noticias:
+    resource: "@AppBundle/Resources/config/routing/noticia.yml"
+    prefix:   /noticias
+
+app_homepage:
+    path:     /
+    defaults: { _controller: AppBundle:Default:index }
