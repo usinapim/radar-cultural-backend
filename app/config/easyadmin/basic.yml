@@ -4,12 +4,33 @@ easy_admin:
     design:
         brand_color: '#e66500'
         menu:
-            - { label: 'Noticias', route: 'noticias_index' }
-            - 'CategoriaNoticia'
-            - 'CategoriaAgenda'
+#            - { label: 'Noticias', route: 'noticias_index' }
+            - 'Noticia'
+            - 'Agenda'
+            - { entity: 'CategoriaNoticia', label: 'Categoria Noticia' }
+            - { entity: 'CategoriaAgenda', label: 'Categoria Agenda' }
             - 'Usuario'
+        assets:
+            css:
+                - '/bundles/app/css/style.css'
+                - '/bundles/app/plugins/bootstrap-datepicker-1.5.1/css/bootstrap-datepicker3.min.css'
+            js:
+                - '/bundles/app/js/app.js'
+                - '/bundles/app/plugins/bootstrap-datepicker-1.5.1/js/bootstrap-datepicker.min.js'
+                - '/bundles/app/plugins/bootstrap-datepicker-1.5.1/locales/bootstrap-datepicker.es.min.js'
     entities:
-        CategoriaAgenda:
-            class: AppBundle\Entity\CategoriaAgenda
-        Usuario:
-            class: UsuariosBundle\Entity\Usuario
+        Noticia:
+            class: AppBundle\Entity\Noticia
+            list:
+                actions:
+                    - { name: '-edit'}
+                    - { name: 'noticias_edit', type: 'route', icon: 'pencil', label: '' }
+                    - { name: 'delete', icon: 'trash', label: '' }
+
+        Agenda:
+            class: AppBundle\Entity\Agenda
+            list:
+                actions:
+                    - { name: '-edit'}
+                    - { name: 'agenda_edit', type: 'route', icon: 'pencil', label: '' }
+                    - { name: 'delete', icon: 'trash', label: '' }

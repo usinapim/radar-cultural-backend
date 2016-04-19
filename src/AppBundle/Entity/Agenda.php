@@ -4,12 +4,19 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\SerializedName;
+use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * Agenda
  *
  * @ORM\Table(name="agendas")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AgendaRepository")
+ * @ExclusionPolicy("all")
  */
 class Agenda
 {
@@ -26,6 +33,8 @@ class Agenda
      * @var string
      *
      * @ORM\Column(name="titulo", type="string", length=255, unique=true)
+     * @SerializedName("titulo")
+     * @Expose
      */
     private $titulo;
 
@@ -33,6 +42,8 @@ class Agenda
      * @var string
      *
      * @ORM\Column(name="resumen", type="string", length=255, nullable=true)
+     * @SerializedName("resumen")
+     * @Expose
      */
     private $resumen;
 
@@ -40,6 +51,8 @@ class Agenda
      * @var string
      *
      * @ORM\Column(name="cuerpo", type="text")
+     * @SerializedName("cuerpo")
+     * @Expose
      */
     private $cuerpo;
 
@@ -103,6 +116,9 @@ class Agenda
      *
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="creado", type="datetime")
+     * @SerializedName("creado")
+     * @Type("DateTime<'d-m-Y H:i'>")
+     * @Expose
      */
     private $creado;
 
@@ -137,6 +153,50 @@ class Agenda
      * @ORM\JoinColumn(name="categoria_agenda_id", referencedColumnName="id", nullable=true)
      */
     private $categoriaAgenda;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\DireccionAgenda", mappedBy="agenda", cascade={"persist", "remove"})
+     */
+    private $direccion;
+
+    public function __toString() {
+        return $this->getTitulo();
+    }
+
+    /**
+     * @SerializedName("categoria")
+     * @VirtualProperty
+     */
+    public function getCategoria() {
+        return $this->getCategoriaAgenda() ? $this->getCategoriaAgenda()->getNombre() : null;
+    }
+
+    /**
+     * @SerializedName("imagenes")
+     * @VirtualProperty
+     */
+    public function getFotos() {
+
+        $aRes = array();
+
+        foreach ( $this->getFotoAgenda() as $fotoAgenda ) {
+            $aRes[] = $fotoAgenda->getUploadDir() . $fotoAgenda->getRuta();
+        }
+
+        return $aRes;
+    }
+
+    /**
+     * @SerializedName("imagen_principal")
+     * @VirtualProperty
+     */
+    public function getImagenPrincipal() {
+
+
+        return $this->getFotoAgenda()->first()->getUploadDir() . $this->getFotoAgenda()->first()->getRuta();
+
+    }
 
     /**
      * Get id
@@ -531,5 +591,38 @@ class Agenda
     public function getCategoriaAgenda()
     {
         return $this->categoriaAgenda;
+    }
+
+    /**
+     * Add direccion
+     *
+     * @param \AppBundle\Entity\DireccionAgenda $direccion
+     * @return Agenda
+     */
+    public function addDireccion(\AppBundle\Entity\DireccionAgenda $direccion)
+    {
+        $this->direccion[] = $direccion;
+
+        return $this;
+    }
+
+    /**
+     * Remove direccion
+     *
+     * @param \AppBundle\Entity\DireccionAgenda $direccion
+     */
+    public function removeDireccion(\AppBundle\Entity\DireccionAgenda $direccion)
+    {
+        $this->direccion->removeElement($direccion);
+    }
+
+    /**
+     * Get direccion
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDireccion()
+    {
+        return $this->direccion;
     }
 }

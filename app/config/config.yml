@@ -108,3 +108,14 @@ fos_rest:
         default_engine: twig
     routing_loader:
         default_format: json
+
+ivory_ck_editor:
+    input_sync: true
+    default_config: base_config
+    configs:
+            base_config:
+                toolbar:
+                    - { name: "styles", items: ['Bold', 'Italic', 'BulletedList', 'Link'] }
+                    - { name: "lists", items: ['BulletedList', 'NumberedList', '-', 'Outdent', 'Indent'] }
+                    - { name: "clipboard", items: ['Copy', 'Paste', 'PasteFromWord', '-', 'Undo', 'Redo'] }
+#                    - { name: "advanced", items: ['Source'] }

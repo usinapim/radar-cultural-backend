@@ -1,7 +1,7 @@
 {% extends 'EasyAdminBundle:default:layout.html.twig' %}
 {#{% extends 'base.html.twig' %}#}
 
-{% block content %}
+{% block main %}
     <h1>Noticia list</h1>
 
     <table>
@@ -10,7 +10,6 @@
                 <th>Id</th>
                 <th>Titulo</th>
                 <th>Resumen</th>
-                <th>Cuerpo</th>
                 <th>Visible</th>
                 <th>Orden</th>
                 <th>Activo</th>
@@ -23,7 +22,6 @@
                 <td><a href="{{ path('noticias_show', { 'id': noticium.id }) }}">{{ noticium.id }}</a></td>
                 <td>{{ noticium.titulo }}</td>
                 <td>{{ noticium.resumen }}</td>
-                <td>{{ noticium.cuerpo }}</td>
                 <td>{% if noticium.visible %}Yes{% else %}No{% endif %}</td>
                 <td>{{ noticium.orden }}</td>
                 <td>{% if noticium.activo %}Yes{% else %}No{% endif %}</td>

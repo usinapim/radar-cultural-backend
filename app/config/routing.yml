@@ -4,7 +4,8 @@ rest :
   prefix : /api
 
 easy_admin_bundle:
-    resource: "@EasyAdminBundle/Controller/"
+    # resource: "@EasyAdminBundle/Controller/"           <-- REMOVE this line
+    resource: "@AppBundle/Controller/AdminController.php" # <-- ADD this line
     type:     annotation
     prefix:   /admin
 
@@ -17,5 +18,8 @@ ubicacion:
 
 app:
     resource: "@AppBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /admin
 
+_homepage:
+    path: /
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: easyadmin, permanent: true }

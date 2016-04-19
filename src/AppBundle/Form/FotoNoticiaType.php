@@ -14,7 +14,9 @@ class FotoNoticiaType extends AbstractType {
 	 */
 	public function buildForm( FormBuilderInterface $builder, array $options ) {
 		$builder
-			->add( 'foto' );
+			->add( 'foto' )
+			->add( 'descripcion' )
+		;
 	}
 
 	/**

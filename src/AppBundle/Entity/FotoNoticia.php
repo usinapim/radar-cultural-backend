@@ -73,6 +73,13 @@ class FotoNoticia {
 	 */
 	private $ruta;
 
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="descripcion", type="string", length=255)
+	 */
+	private $descripcion;
+
 	public function __toString() {
 		return $this->ruta;
 	}
@@ -349,5 +356,28 @@ class FotoNoticia {
     public function getNoticia()
     {
         return $this->noticia;
+    }
+
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     * @return FotoNoticia
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string 
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
     }
 }

@@ -1,3 +1,7 @@
+app_agenda:
+    resource: "@AppBundle/Resources/config/routing/agenda.yml"
+    prefix:   /agenda
+
 app_noticias:
     resource: "@AppBundle/Resources/config/routing/noticia.yml"
     prefix:   /noticias

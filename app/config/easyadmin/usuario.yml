@@ -1,0 +1,9 @@
+#Usuario
+easy_admin:
+    entities:
+        Usuario:
+            class: UsuariosBundle\Entity\Usuario
+            form:
+                fields:
+                    - { property: 'username', css_class: 'col-sm-4' }
+                    - { property: 'email', css_class: 'col-sm-6' }

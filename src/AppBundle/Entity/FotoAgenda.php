@@ -60,7 +60,7 @@ class FotoAgenda
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Agenda", inversedBy="fotoAgenda")
-     * @ORM\JoinColumn(name="noticia_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="agenda_id", referencedColumnName="id")
      */
     private $agenda;
 
@@ -70,6 +70,13 @@ class FotoAgenda
      * @ORM\Column(name="ruta", type="string", length=255)
      */
     private $ruta;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion", type="string", length=255)
+     */
+    private $descripcion;
 
     public function __toString() {
         return $this->ruta;
@@ -94,7 +101,7 @@ class FotoAgenda
         return __DIR__ . '/../../../web/' . $this->getUploadDir();
     }
 
-    protected function getUploadDir() {
+    public function getUploadDir() {
         // get rid of the __DIR__ so it doesn't screw up
         // when displaying uploaded doc/image in the view.
         return 'uploads/images/agenda/';
@@ -197,5 +204,176 @@ class FotoAgenda
         if (isset($this->temp)) {
             unlink($this->temp);
         }
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set creado
+     *
+     * @param \DateTime $creado
+     * @return FotoAgenda
+     */
+    public function setCreado($creado)
+    {
+        $this->creado = $creado;
+
+        return $this;
+    }
+
+    /**
+     * Get creado
+     *
+     * @return \DateTime 
+     */
+    public function getCreado()
+    {
+        return $this->creado;
+    }
+
+    /**
+     * Set actualizado
+     *
+     * @param \DateTime $actualizado
+     * @return FotoAgenda
+     */
+    public function setActualizado($actualizado)
+    {
+        $this->actualizado = $actualizado;
+
+        return $this;
+    }
+
+    /**
+     * Get actualizado
+     *
+     * @return \DateTime 
+     */
+    public function getActualizado()
+    {
+        return $this->actualizado;
+    }
+
+    /**
+     * Set ruta
+     *
+     * @param string $ruta
+     * @return FotoAgenda
+     */
+    public function setRuta($ruta)
+    {
+        $this->ruta = $ruta;
+
+        return $this;
+    }
+
+    /**
+     * Get ruta
+     *
+     * @return string 
+     */
+    public function getRuta()
+    {
+        return $this->ruta;
+    }
+
+    /**
+     * Set creadoPor
+     *
+     * @param \UsuariosBundle\Entity\Usuario $creadoPor
+     * @return FotoAgenda
+     */
+    public function setCreadoPor(\UsuariosBundle\Entity\Usuario $creadoPor = null)
+    {
+        $this->creadoPor = $creadoPor;
+
+        return $this;
+    }
+
+    /**
+     * Get creadoPor
+     *
+     * @return \UsuariosBundle\Entity\Usuario 
+     */
+    public function getCreadoPor()
+    {
+        return $this->creadoPor;
+    }
+
+    /**
+     * Set actualizadoPor
+     *
+     * @param \UsuariosBundle\Entity\Usuario $actualizadoPor
+     * @return FotoAgenda
+     */
+    public function setActualizadoPor(\UsuariosBundle\Entity\Usuario $actualizadoPor = null)
+    {
+        $this->actualizadoPor = $actualizadoPor;
+
+        return $this;
+    }
+
+    /**
+     * Get actualizadoPor
+     *
+     * @return \UsuariosBundle\Entity\Usuario 
+     */
+    public function getActualizadoPor()
+    {
+        return $this->actualizadoPor;
+    }
+
+    /**
+     * Set agenda
+     *
+     * @param \AppBundle\Entity\Agenda $agenda
+     * @return FotoAgenda
+     */
+    public function setAgenda(\AppBundle\Entity\Agenda $agenda = null)
+    {
+        $this->agenda = $agenda;
+
+        return $this;
+    }
+
+    /**
+     * Get agenda
+     *
+     * @return \AppBundle\Entity\Agenda 
+     */
+    public function getAgenda()
+    {
+        return $this->agenda;
+    }
+
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     * @return FotoAgenda
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string 
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
     }
 }

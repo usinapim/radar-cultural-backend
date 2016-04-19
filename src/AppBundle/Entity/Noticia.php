@@ -146,7 +146,8 @@ class Noticia {
 		$aRes = array();
 
 		foreach ( $this->getFotoNoticias() as $fotoNoticia ) {
-			$aRes[] = $fotoNoticia->getUploadDir() . $fotoNoticia->getRuta();
+			$aRes['path'] = $fotoNoticia->getUploadDir() . $fotoNoticia->getRuta();
+			$aRes['descripcion'] = $fotoNoticia->getDescripcion();
 		}
 
 		return $aRes;
@@ -158,8 +159,13 @@ class Noticia {
 	 */
 	public function getImagenPrincipal() {
 
+		if ( $this->getFotoNoticias()->count() > 0 ) {
 
-		return $this->getFotoNoticias()->first()->getUploadDir() . $this->getFotoNoticias()->first()->getRuta();
+			return $this->getFotoNoticias()->first()->getUploadDir() . $this->getFotoNoticias()->first()->getRuta();
+		}
+
+		return array();
+
 
 	}
 
@@ -364,95 +370,91 @@ class Noticia {
 		return $this->categoriaNoticia;
 	}
 
-    /**
-     * Set creado
-     *
-     * @param \DateTime $creado
-     * @return Noticia
-     */
-    public function setCreado($creado)
-    {
-        $this->creado = $creado;
+	/**
+	 * Set creado
+	 *
+	 * @param \DateTime $creado
+	 *
+	 * @return Noticia
+	 */
+	public function setCreado( $creado ) {
+		$this->creado = $creado;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Get creado
-     *
-     * @return \DateTime 
-     */
-    public function getCreado()
-    {
-        return $this->creado;
-    }
+	/**
+	 * Get creado
+	 *
+	 * @return \DateTime
+	 */
+	public function getCreado() {
+		return $this->creado;
+	}
 
-    /**
-     * Set actualizado
-     *
-     * @param \DateTime $actualizado
-     * @return Noticia
-     */
-    public function setActualizado($actualizado)
-    {
-        $this->actualizado = $actualizado;
+	/**
+	 * Set actualizado
+	 *
+	 * @param \DateTime $actualizado
+	 *
+	 * @return Noticia
+	 */
+	public function setActualizado( $actualizado ) {
+		$this->actualizado = $actualizado;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Get actualizado
-     *
-     * @return \DateTime 
-     */
-    public function getActualizado()
-    {
-        return $this->actualizado;
-    }
+	/**
+	 * Get actualizado
+	 *
+	 * @return \DateTime
+	 */
+	public function getActualizado() {
+		return $this->actualizado;
+	}
 
-    /**
-     * Set creadoPor
-     *
-     * @param \UsuariosBundle\Entity\Usuario $creadoPor
-     * @return Noticia
-     */
-    public function setCreadoPor(\UsuariosBundle\Entity\Usuario $creadoPor = null)
-    {
-        $this->creadoPor = $creadoPor;
+	/**
+	 * Set creadoPor
+	 *
+	 * @param \UsuariosBundle\Entity\Usuario $creadoPor
+	 *
+	 * @return Noticia
+	 */
+	public function setCreadoPor( \UsuariosBundle\Entity\Usuario $creadoPor = null ) {
+		$this->creadoPor = $creadoPor;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Get creadoPor
-     *
-     * @return \UsuariosBundle\Entity\Usuario 
-     */
-    public function getCreadoPor()
-    {
-        return $this->creadoPor;
-    }
+	/**
+	 * Get creadoPor
+	 *
+	 * @return \UsuariosBundle\Entity\Usuario
+	 */
+	public function getCreadoPor() {
+		return $this->creadoPor;
+	}
 
-    /**
-     * Set actualizadoPor
-     *
-     * @param \UsuariosBundle\Entity\Usuario $actualizadoPor
-     * @return Noticia
-     */
-    public function setActualizadoPor(\UsuariosBundle\Entity\Usuario $actualizadoPor = null)
-    {
-        $this->actualizadoPor = $actualizadoPor;
+	/**
+	 * Set actualizadoPor
+	 *
+	 * @param \UsuariosBundle\Entity\Usuario $actualizadoPor
+	 *
+	 * @return Noticia
+	 */
+	public function setActualizadoPor( \UsuariosBundle\Entity\Usuario $actualizadoPor = null ) {
+		$this->actualizadoPor = $actualizadoPor;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Get actualizadoPor
-     *
-     * @return \UsuariosBundle\Entity\Usuario 
-     */
-    public function getActualizadoPor()
-    {
-        return $this->actualizadoPor;
-    }
+	/**
+	 * Get actualizadoPor
+	 *
+	 * @return \UsuariosBundle\Entity\Usuario
+	 */
+	public function getActualizadoPor() {
+		return $this->actualizadoPor;
+	}
 }

@@ -1,6 +1,4 @@
-{% extends 'EasyAdminBundle:default:layout.html.twig' %}
-{#{% extends 'base.html.twig' %}#}
-
+{% extends '::custom_base.html.twig' %}
 {% block content %}
     <section class="content-header">
         {% block content_header %}
@@ -23,7 +21,7 @@
     <ul>
         <li>
             <a class="btn btn-secondary action-list"
-               href="{{ path('noticias_index') }}">{{ 'action.list' |trans(domain = 'messages') }}</a>
+               href="{{ path('admin', {'entity':'Noticia'}) }}">{{ 'action.list' |trans(domain = 'messages') }}</a>
         </li>
     </ul>
 {% endblock %}

@@ -77,6 +77,10 @@ class CategoriaAgenda
      */
     private $agenda;
 
+    public function __toString() {
+        return $this->getNombre();
+    }
+
     /**
      * Get id
      *
