@@ -1,16 +1,29 @@
-{% extends 'base.html.twig' %}
+{% extends 'EasyAdminBundle:default:layout.html.twig' %}
+{#{% extends 'base.html.twig' %}#}
 
-{% block body %}
-    <h1>Noticia creation</h1>
+{% block content %}
+    <section class="content-header">
+        {% block content_header %}
+            <h1 class="title">
+                {% block content_title %}
+                    <h1 class="title" xmlns="http://www.w3.org/1999/html">Nueva Noticia</h1>
+                {% endblock %}
+            </h1>
+        {% endblock content_header %}
+    </section>
+    {% form_theme form with easyadmin_config('design.form_theme') %}
 
     {{ form_start(form) }}
+    <div class="content">
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <button class="btn btn-primary" type="submit" value="Create"><i class="fa fa-save"></i> Guardar</button>
+    </div>
     {{ form_end(form) }}
 
     <ul>
         <li>
-            <a href="{{ path('noticias_index') }}">Back to the list</a>
+            <a class="btn btn-secondary action-list"
+               href="{{ path('noticias_index') }}">{{ 'action.list' |trans(domain = 'messages') }}</a>
         </li>
     </ul>
 {% endblock %}

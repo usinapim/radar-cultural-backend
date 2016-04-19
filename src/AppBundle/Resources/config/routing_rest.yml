@@ -1,0 +1,9 @@
+noticias :
+  type: rest
+  resource:     "AppBundle:NoticasRest"
+  name_prefix:  api_
+
+#agendas :
+#  type: rest
+#  resource:     "AppBundle:TipsRest"
+#  name_prefix:  api_

@@ -8,7 +8,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Agenda
  *
- * @ORM\Table(name="agenda")
+ * @ORM\Table(name="agendas")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AgendaRepository")
  */
 class Agenda
