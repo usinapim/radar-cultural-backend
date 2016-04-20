@@ -7,4 +7,7 @@ $(document).ready(function () {
         language: "es",
         autoclose: true,
     });
+    $('.datetimepicker').datetimepicker({
+        locale: 'es'
+    });
 })

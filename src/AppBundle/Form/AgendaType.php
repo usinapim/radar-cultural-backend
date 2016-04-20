@@ -50,10 +50,10 @@ class AgendaType extends AbstractType {
 				DateTimeType::class,
 				array(
 					'widget' => 'single_text',
-					'format' => 'dd/MM/yyyy',
+					'format' => 'dd/MM/yyyy HH:mm',
 					'attr'   => array(
-						'class'           => 'datepicker',
-						'data-dateformat' => 'dd/mm/yy',
+						'class'           => 'datetimepicker',
+//						'data-dateformat' => 'dd/mm/yy',
 						'placeholder'     => 'Selecciona una fecha'
 					)
 				)
@@ -63,17 +63,16 @@ class AgendaType extends AbstractType {
 				DateTimeType::class,
 				array(
 					'widget' => 'single_text',
-					'format' => 'dd/MM/yyyy',
+					'format' => 'dd/MM/yyyy HH:mm',
 					'attr'   => array(
-						'class'           => 'datepicker',
-						'data-dateformat' => 'dd/mm/yy',
+						'class'           => 'datetimepicker',
+//						'data-dateformat' => 'dd/mm/yy hh:i',
 						'placeholder'     => 'Selecciona una fecha'
 					)
 				)
 
 			)
 			->add( 'orden' )
-			->add( 'creacion' )
 			->add( 'activo' )
 			->add( 'categoriaAgenda',
 				EntityType::class,
