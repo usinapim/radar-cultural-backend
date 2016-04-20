@@ -148,8 +148,10 @@ class Noticia {
 		$aRes = array();
 
 		foreach ( $this->getFotoNoticias() as $fotoNoticia ) {
-			$aRes['path'] = $fotoNoticia->getUploadDir() . $fotoNoticia->getRuta();
-			$aRes['descripcion'] = $fotoNoticia->getDescripcion();
+			$aRes[] = array(
+				'path'        => $fotoNoticia->getUploadDir() . $fotoNoticia->getRuta(),
+				'descripcion' => $fotoNoticia->getDescripcion()
+			);
 		}
 
 		return $aRes;

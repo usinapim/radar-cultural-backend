@@ -183,8 +183,10 @@ class Agenda
         $aRes = array();
 
         foreach ( $this->getFotoAgenda() as $fotoAgenda ) {
-            $aRes['path'] = $fotoAgenda->getUploadDir() . $fotoAgenda->getRuta();
-            $aRes['descripcion'] = $fotoAgenda->getDescripcion();
+            $aRes[] = array(
+                'path'        => $fotoAgenda->getUploadDir() . $fotoAgenda->getRuta(),
+                'descripcion' => $fotoAgenda->getDescripcion()
+            );
         }
 
         return $aRes;
