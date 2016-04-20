@@ -4,12 +4,19 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\SerializedName;
+use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * Contacto
  *
- * @ORM\Table(name="contacto")
+ * @ORM\Table(name="contactos")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ContactoRepository")
+ * @ExclusionPolicy("all")
  */
 class Contacto {
 	/**
@@ -25,6 +32,8 @@ class Contacto {
 	 * @var string
 	 *
 	 * @ORM\Column(name="nombre", type="string", length=255)
+	 * @SerializedName("nombre")
+	 * @Expose
 	 */
 	private $nombre;
 
@@ -32,6 +41,8 @@ class Contacto {
 	 * @var string
 	 *
 	 * @ORM\Column(name="apellido", type="string", length=255)
+	 * @SerializedName("apellido")
+	 * @Expose
 	 */
 	private $apellido;
 
@@ -39,6 +50,8 @@ class Contacto {
 	 * @var string
 	 *
 	 * @ORM\Column(name="email", type="string", length=255)
+	 * @SerializedName("email")
+	 * @Expose
 	 */
 	private $email;
 
@@ -46,6 +59,8 @@ class Contacto {
 	 * @var string
 	 *
 	 * @ORM\Column(name="mensaje", type="text")
+	 * @SerializedName("mensaje")
+	 * @Expose
 	 */
 	private $mensaje;
 
