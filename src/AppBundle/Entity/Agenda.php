@@ -198,7 +198,7 @@ class Agenda
             return $this->getFotoAgenda()->first()->getUploadDir() . $this->getFotoAgenda()->first()->getRuta();
         }
 
-        return array();
+        return null;
 
     }
 

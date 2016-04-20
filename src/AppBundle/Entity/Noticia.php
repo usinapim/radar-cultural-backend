@@ -164,7 +164,7 @@ class Noticia {
 			return $this->getFotoNoticias()->first()->getUploadDir() . $this->getFotoNoticias()->first()->getRuta();
 		}
 
-		return array();
+		return null;
 
 
 	}
