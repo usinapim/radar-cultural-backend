@@ -1,6 +1,6 @@
 noticias :
   type: rest
-  resource:     "AppBundle:NoticasRest"
+  resource:     "AppBundle:NoticiasRest"
   name_prefix:  api_
 
 agendas :

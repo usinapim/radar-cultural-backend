@@ -6,7 +6,7 @@ namespace AppBundle\Controller;
 
 use FOS\RestBundle\Controller\FOSRestController;
 
-class NoticasRestController extends FOSRestController {
+class NoticiasRestController extends FOSRestController {
 
 	public function getNoticiasAction() {
 		$em = $this->getDoctrine()->getManager();
