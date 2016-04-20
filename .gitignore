@@ -40,8 +40,8 @@
 /composer.phar
 
 #App specified
-!/web/uploads/noticia/.gitkeep
-!/web/uploads/agenda/.gitkeep
+!/web/uploads/images/agenda/.gitkeep
+!/web/uploads/images/noticia/.gitkeep
 
 # -- Editores -----------------------------------------
 # vim
