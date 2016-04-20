@@ -3,7 +3,10 @@
 namespace AppBundle\Form;
 
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -18,7 +21,7 @@ class AgendaType extends AbstractType {
 			->add( 'resumen' )
 			->add( 'cuerpo', CKEditorType::class )
 			->add( 'visibleDesde',
-				'datetime',
+				DateTimeType::class,
 				array(
 					'widget' => 'single_text',
 					'format' => 'dd/MM/yyyy',
@@ -31,7 +34,7 @@ class AgendaType extends AbstractType {
 
 			)
 			->add( 'visibleHasta',
-				'datetime',
+				DateTimeType::class,
 				array(
 					'widget' => 'single_text',
 					'format' => 'dd/MM/yyyy',
@@ -44,7 +47,7 @@ class AgendaType extends AbstractType {
 
 			)
 			->add( 'fechaEventoDesde',
-				'datetime',
+				DateTimeType::class,
 				array(
 					'widget' => 'single_text',
 					'format' => 'dd/MM/yyyy',
@@ -57,7 +60,7 @@ class AgendaType extends AbstractType {
 
 			)
 			->add( 'fechaEventoHasta',
-				'datetime',
+				DateTimeType::class,
 				array(
 					'widget' => 'single_text',
 					'format' => 'dd/MM/yyyy',
@@ -72,18 +75,26 @@ class AgendaType extends AbstractType {
 			->add( 'orden' )
 			->add( 'creacion' )
 			->add( 'activo' )
-			->add( 'categoriaAgenda', 'entity',
+			->add( 'categoriaAgenda',
+				EntityType::class,
 				array(
 					'class' => 'AppBundle\Entity\CategoriaAgenda',
 //					'multiple' => true,
 					'attr'  => array( 'multiple' => true, 'data-widget' => 'select2' ),
 
 
-		) )
+				) )
 			->add( 'fotoAgenda',
-				'collection',
+				CollectionType::class,
 				array(
 					'type'         => new FotoAgendaType(),
+					'allow_add'    => true,
+					'allow_delete' => true,
+				) )
+			->add( 'direccion',
+				CollectionType::class,
+				array(
+					'type'         => new DireccionAgendaType(),
 					'allow_add'    => true,
 					'allow_delete' => true,
 				) );

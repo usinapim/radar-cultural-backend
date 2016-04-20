@@ -187,10 +187,10 @@ class Departamento {
     /**
      * Set provincia
      *
-     * @param \UbicacionBundle\Entity\Provincia $provincia
+     * @param \Matudelatower\UbicacionBundle\Entity\Provincia $provincia
      * @return Departamento
      */
-    public function setProvincia(\UbicacionBundle\Entity\Provincia $provincia = null) {
+    public function setProvincia(\Matudelatower\UbicacionBundle\Entity\Provincia $provincia = null) {
         $this->provincia = $provincia;
 
         return $this;
@@ -199,7 +199,7 @@ class Departamento {
     /**
      * Get provincia
      *
-     * @return \UbicacionBundle\Entity\Provincia
+     * @return \Matudelatower\UbicacionBundle\Entity\Provincia
      */
     public function getProvincia() {
         return $this->provincia;
@@ -208,10 +208,10 @@ class Departamento {
     /**
      * Add localidad
      *
-     * @param \UbicacionBundle\Entity\Localidad $localidad
+     * @param \Matudelatower\UbicacionBundle\Entity\Localidad $localidad
      * @return Departamento
      */
-    public function addLocalidad(\UbicacionBundle\Entity\Localidad $localidad) {
+    public function addLocalidad(\Matudelatower\UbicacionBundle\Entity\Localidad $localidad) {
         $this->localidad[] = $localidad;
 
         return $this;
@@ -220,9 +220,9 @@ class Departamento {
     /**
      * Remove localidad
      *
-     * @param \UbicacionBundle\Entity\Localidad $localidad
+     * @param \Matudelatower\UbicacionBundle\Entity\Localidad $localidad
      */
-    public function removeLocalidad(\UbicacionBundle\Entity\Localidad $localidad) {
+    public function removeLocalidad(\Matudelatower\UbicacionBundle\Entity\Localidad $localidad) {
         $this->localidad->removeElement($localidad);
     }
 

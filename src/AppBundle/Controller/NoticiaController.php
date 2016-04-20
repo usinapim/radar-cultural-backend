@@ -40,10 +40,15 @@ class NoticiaController extends Controller {
 
 		if ( $form->isSubmitted() && $form->isValid() ) {
 			$em = $this->getDoctrine()->getManager();
+
+			foreach ( $noticium->getFotoNoticias() as $fotoNoticia ) {
+				$fotoNoticia->setNoticia( $noticium );
+			}
+
 			$em->persist( $noticium );
 			$em->flush();
 
-			return $this->redirectToRoute( 'noticias_show', array( 'id' => $noticium->getId() ) );
+			return $this->redirectToRoute( 'noticias_edit', array( 'id' => $noticium->getId() ) );
 		}
 
 		return $this->render( 'noticia/new.html.twig',

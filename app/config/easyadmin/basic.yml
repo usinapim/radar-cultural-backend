@@ -9,6 +9,10 @@ easy_admin:
             - 'Agenda'
             - { entity: 'CategoriaNoticia', label: 'Categoria Noticia' }
             - { entity: 'CategoriaAgenda', label: 'Categoria Agenda' }
+            - 'Pais'
+            - 'Provincia'
+            - 'Departamento'
+            - 'Localidad'
             - 'Usuario'
         assets:
             css:

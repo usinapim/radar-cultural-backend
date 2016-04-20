@@ -187,10 +187,10 @@ class Provincia {
     /**
      * Add departamento
      *
-     * @param \UbicacionBundle\Entity\Departamento $departamento
+     * @param \Matudelatower\UbicacionBundle\Entity\Departamento $departamento
      * @return Provincia
      */
-    public function addDepartamento(\UbicacionBundle\Entity\Departamento $departamento) {
+    public function addDepartamento(\Matudelatower\UbicacionBundle\Entity\Departamento $departamento) {
         $this->departamento[] = $departamento;
 
         return $this;
@@ -199,9 +199,9 @@ class Provincia {
     /**
      * Remove departamento
      *
-     * @param \UbicacionBundle\Entity\Departamento $departamento
+     * @param \Matudelatower\UbicacionBundle\Entity\Departamento $departamento
      */
-    public function removeDepartamento(\UbicacionBundle\Entity\Departamento $departamento) {
+    public function removeDepartamento(\Matudelatower\UbicacionBundle\Entity\Departamento $departamento) {
         $this->departamento->removeElement($departamento);
     }
 
@@ -217,10 +217,10 @@ class Provincia {
     /**
      * Set pais
      *
-     * @param \UbicacionBundle\Entity\Pais $pais
+     * @param \Matudelatower\UbicacionBundle\Entity\Pais $pais
      * @return Provincia
      */
-    public function setPais(\UbicacionBundle\Entity\Pais $pais = null) {
+    public function setPais(\Matudelatower\UbicacionBundle\Entity\Pais $pais = null) {
         $this->pais = $pais;
 
         return $this;
@@ -229,7 +229,7 @@ class Provincia {
     /**
      * Get pais
      *
-     * @return \UbicacionBundle\Entity\Pais
+     * @return \Matudelatower\UbicacionBundle\Entity\Pais
      */
     public function getPais() {
         return $this->pais;

@@ -9,7 +9,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * Localidad
  *
  * @ORM\Table(name="localidades")
- * @ORM\Entity(repositoryClass="UbicacionBundle\Entity\LocalidadRepository")
+ * @ORM\Entity(repositoryClass="Matudelatower\UbicacionBundle\Entity\LocalidadRepository")
  */
 class Localidad {
 
@@ -203,10 +203,10 @@ class Localidad {
     /**
      * Set departamento
      *
-     * @param \UbicacionBundle\Entity\Departamento $departamento
+     * @param \Matudelatower\UbicacionBundle\Entity\Departamento $departamento
      * @return Localidad
      */
-    public function setDepartamento(\UbicacionBundle\Entity\Departamento $departamento = null) {
+    public function setDepartamento(\Matudelatower\UbicacionBundle\Entity\Departamento $departamento = null) {
         $this->departamento = $departamento;
 
         return $this;
@@ -215,7 +215,7 @@ class Localidad {
     /**
      * Get departamento
      *
-     * @return \UbicacionBundle\Entity\Departamento
+     * @return \Matudelatower\UbicacionBundle\Entity\Departamento
      */
     public function getDepartamento() {
         return $this->departamento;

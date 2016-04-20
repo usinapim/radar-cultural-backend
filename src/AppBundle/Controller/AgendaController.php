@@ -42,10 +42,19 @@ class AgendaController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            foreach ( $agenda->getFotoAgenda() as $fotoAgenda ) {
+                $fotoAgenda->setAgenda( $agenda );
+            }
+            
+            foreach ( $agenda->getDireccion() as $direccion ) {
+                $direccion->setAgenda( $agenda );
+            }
+
             $em->persist($agenda);
             $em->flush();
 
-            return $this->redirectToRoute('agenda_show', array('id' => $agenda->getId()));
+            return $this->redirectToRoute('agenda_edit', array('id' => $agenda->getId()));
         }
 
         return $this->render('agenda/new.html.twig', array(
@@ -83,6 +92,13 @@ class AgendaController extends Controller
         foreach ( $agenda->getFotoAgenda() as $fotoAgenda ) {
             $fotosOriginales->add( $fotoAgenda );
         }
+        
+        $domiciliosOriginales = new ArrayCollection();
+
+        // Create an ArrayCollection of the current Tag objects in the database
+        foreach ( $agenda->getDireccion() as $fotoAgenda ) {
+            $domiciliosOriginales->add( $fotoAgenda );
+        }
 
         $editForm->handleRequest($request);
 
@@ -99,6 +115,17 @@ class AgendaController extends Controller
                     $em->remove( $fotosOriginale );
                 }
             }
+            foreach ( $agenda->getDireccion() as $direccion ) {
+                $direccion->setAgenda( $agenda );
+            }
+
+            foreach ( $domiciliosOriginales  as $domiciliosOriginale ) {
+                if ( false === $agenda->getDireccion()->contains( $domiciliosOriginale ) ) {
+                    $domiciliosOriginale->setAgenda( null );
+                    $em->remove( $domiciliosOriginale );
+                }
+            }
+
             $em->persist($agenda);
             $em->flush();
 
