@@ -24,7 +24,7 @@
 
 # Assets and user uploads
 /web/bundles/
-/web/uploads/
+/web/uploads/*
 
 # Assets managed by Bower
 /web/assets/vendor/
@@ -40,8 +40,8 @@
 /composer.phar
 
 #App specified
-!/web/uploads/images/agenda/.gitkeep
-!/web/uploads/images/noticia/.gitkeep
+!web/uploads/images/agenda/.gitkeep
+!web/uploads/images/noticia/.gitkeep
 
 # -- Editores -----------------------------------------
 # vim
