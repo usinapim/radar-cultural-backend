@@ -4,16 +4,21 @@ easy_admin:
     design:
         brand_color: '#e66500'
         menu:
-#            - { label: 'Noticias', route: 'noticias_index' }
             - 'Noticia'
             - 'Agenda'
-            - { entity: 'CategoriaNoticia', label: 'Categoria Noticia' }
-            - { entity: 'CategoriaAgenda', label: 'Categoria Agenda' }
-            - 'Pais'
-            - 'Provincia'
-            - 'Departamento'
-            - 'Localidad'
+            - 'Contacto'
+            - label: 'Categorias'
+              children:
+                  - { entity: 'CategoriaNoticia', label: 'Categoria Noticia' }
+                  - { entity: 'CategoriaAgenda', label: 'Categoria Agenda' }
+            - label: 'Ubicacion'
+              children:
+                  - 'Pais'
+                  - 'Provincia'
+                  - 'Departamento'
+                  - 'Localidad'
             - 'Usuario'
+            - { label: 'Cerrar Sesion', route: 'fos_user_security_logout', icon: 'sign-out' }
         assets:
             css:
                 - '/bundles/app/css/style.css'

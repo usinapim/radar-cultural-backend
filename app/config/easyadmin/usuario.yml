@@ -3,7 +3,12 @@ easy_admin:
     entities:
         Usuario:
             class: UsuariosBundle\Entity\Usuario
-            form:
+            edit:
+                fields: ['username', 'email', 'enabled', 'locked']
+            new:
                 fields:
-                    - { property: 'username', css_class: 'col-sm-4' }
-                    - { property: 'email', css_class: 'col-sm-6' }
+                    - { property: 'username' }
+                    - { property: 'email', type: 'email', label: 'E-mail address' }
+                    - { property: 'plainPassword', type: 'password' }
+                    - { property: 'enabled'}
+                    - { property: 'locked'}
