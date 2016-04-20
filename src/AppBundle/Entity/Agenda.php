@@ -193,8 +193,12 @@ class Agenda
      */
     public function getImagenPrincipal() {
 
+        if ( $this->getFotoAgenda()->count() > 0 ) {
 
-        return $this->getFotoAgenda()->first()->getUploadDir() . $this->getFotoAgenda()->first()->getRuta();
+            return $this->getFotoAgenda()->first()->getUploadDir() . $this->getFotoAgenda()->first()->getRuta();
+        }
+
+        return array();
 
     }
 
