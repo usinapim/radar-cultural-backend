@@ -14,7 +14,7 @@ class AgendasRestController extends FOSRestController {
 
 		foreach ( $agendas as $agenda ) {
 
-			$texto = $agenda->getFechaEventoDesde()->format( 'd-m-Y' );
+			$texto = $this->formatoFecha($agenda->getFechaEventoDesde()->format( 'Y-m-d' ));
 			$index = $this->findGrupoIndex( $aAgendas, $texto );
 			if ( $index !== false ) {
 				//es un grupo
@@ -46,6 +46,36 @@ class AgendasRestController extends FOSRestController {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Devuelve una fecha formateada  asi 'Miercoles, 20 de Abril del 2016'
+	 *
+	 * @param DateTime $fecha format Y-m-d
+	 *
+	 * @return string
+	 */
+	private function formatoFecha( $fecha ) {
+		$dias       = array( "Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sábado" );
+		$meses      = array(
+			"Enero",
+			"Febrero",
+			"Marzo",
+			"Abril",
+			"Mayo",
+			"Junio",
+			"Julio",
+			"Agosto",
+			"Septiembre",
+			"Octubre",
+			"Noviembre",
+			"Diciembre"
+		);
+		$timeStamp  = strtotime( str_replace( "/", "-", $fecha ) );
+		$textoFecha = $dias[ date( 'w', $timeStamp ) ] . ", " . date( 'd', $timeStamp ) . " de " . $meses[ date( 'n',
+				$timeStamp ) - 1 ] . " del " . date( 'Y', $timeStamp );
+
+		return $textoFecha;
 	}
 
 }
