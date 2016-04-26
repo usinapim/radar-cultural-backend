@@ -36,6 +36,13 @@ class CategoriaNoticia
      */
     private $descripcion;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="icono", type="string", length=255, nullable=true)
+     */
+    private $icono;
+
 
     /**
      * @var datetime $creado
@@ -267,5 +274,29 @@ class CategoriaNoticia
     public function getNoticia()
     {
         return $this->noticia;
+    }
+
+    /**
+     * Set icono
+     *
+     * @param string $icono
+     *
+     * @return CategoriaNoticia
+     */
+    public function setIcono($icono)
+    {
+        $this->icono = $icono;
+
+        return $this;
+    }
+
+    /**
+     * Get icono
+     *
+     * @return string
+     */
+    public function getIcono()
+    {
+        return $this->icono;
     }
 }

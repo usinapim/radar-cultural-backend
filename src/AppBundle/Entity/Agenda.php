@@ -173,6 +173,14 @@ class Agenda {
 	}
 
 	/**
+	 * @SerializedName("icono")
+	 * @VirtualProperty
+	 */
+	public function getIcono() {
+		return $this->getCategoriaAgenda() ? $this->getCategoriaAgenda()->getIcono() : null;
+	}
+
+	/**
 	 * @SerializedName("imagenes")
 	 * @VirtualProperty
 	 */

@@ -7,3 +7,4 @@ easy_admin:
                 fields:
                     - { property: 'nombre', type: 'text' }
                     - { property: 'descripcion', type: 'text' }
+                    - { property: 'icono', type: 'text' }

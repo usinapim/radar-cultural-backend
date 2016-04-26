@@ -36,6 +36,13 @@ class CategoriaAgenda
      */
     private $descripcion;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="icono", type="string", length=255, nullable=true)
+     */
+    private $icono;
+
 
     /**
      * @var datetime $creado
@@ -267,5 +274,29 @@ class CategoriaAgenda
     public function getAgenda()
     {
         return $this->agenda;
+    }
+
+    /**
+     * Set icono
+     *
+     * @param string $icono
+     *
+     * @return CategoriaAgenda
+     */
+    public function setIcono($icono)
+    {
+        $this->icono = $icono;
+
+        return $this;
+    }
+
+    /**
+     * Get icono
+     *
+     * @return string
+     */
+    public function getIcono()
+    {
+        return $this->icono;
     }
 }
