@@ -1,7 +1,0 @@
-ubicacion_pais:
-    resource: "@UbicacionBundle/Resources/config/routing/pais.yml"
-    prefix:   /pais
-
-ubicacion_homepage:
-    path:     /
-    defaults: { _controller: UbicacionBundle:Default:index }

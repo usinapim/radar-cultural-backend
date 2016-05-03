@@ -12,10 +12,12 @@ namespace UsuariosBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="UsuarioRepository")
  * @ORM\Table(name="fos_user")
+ * @UniqueEntity("username")
  */
 class Usuario extends BaseUser {
 
