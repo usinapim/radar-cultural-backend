@@ -58,11 +58,18 @@ class Noticia {
 	private $cuerpo;
 
 	/**
-	 * @var bool
+	 * @var \DateTime
 	 *
-	 * @ORM\Column(name="visible", type="boolean", nullable=true)
+	 * @ORM\Column(name="visible_desde", type="datetime", nullable=true)
 	 */
-	private $visible;
+	private $visibleDesde;
+
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="visible_hasta", type="datetime", nullable=true)
+	 */
+	private $visibleHasta;
 
 	/**
 	 * @var int
@@ -138,6 +145,15 @@ class Noticia {
 	public function getCategoria() {
 		return $this->getCategoriaNoticia() ? $this->getCategoriaNoticia()->getNombre() : null;
 	}
+
+	/**
+	 * @SerializedName("icono")
+	 * @VirtualProperty
+	 */
+	public function getIcono() {
+		return $this->getCategoriaNoticia() ? $this->getCategoriaNoticia()->getIcono() : null;
+	}
+
 
 	/**
 	 * @SerializedName("imagenes")
@@ -255,27 +271,7 @@ class Noticia {
 		return $this->cuerpo;
 	}
 
-	/**
-	 * Set visible
-	 *
-	 * @param boolean $visible
-	 *
-	 * @return Noticia
-	 */
-	public function setVisible( $visible ) {
-		$this->visible = $visible;
 
-		return $this;
-	}
-
-	/**
-	 * Get visible
-	 *
-	 * @return boolean
-	 */
-	public function getVisible() {
-		return $this->visible;
-	}
 
 	/**
 	 * Set orden
@@ -461,4 +457,52 @@ class Noticia {
 	public function getActualizadoPor() {
 		return $this->actualizadoPor;
 	}
+
+    /**
+     * Set visibleDesde
+     *
+     * @param \DateTime $visibleDesde
+     *
+     * @return Noticia
+     */
+    public function setVisibleDesde($visibleDesde)
+    {
+        $this->visibleDesde = $visibleDesde;
+
+        return $this;
+    }
+
+    /**
+     * Get visibleDesde
+     *
+     * @return \DateTime
+     */
+    public function getVisibleDesde()
+    {
+        return $this->visibleDesde;
+    }
+
+    /**
+     * Set visibleHasta
+     *
+     * @param \DateTime $visibleHasta
+     *
+     * @return Noticia
+     */
+    public function setVisibleHasta($visibleHasta)
+    {
+        $this->visibleHasta = $visibleHasta;
+
+        return $this;
+    }
+
+    /**
+     * Get visibleHasta
+     *
+     * @return \DateTime
+     */
+    public function getVisibleHasta()
+    {
+        return $this->visibleHasta;
+    }
 }

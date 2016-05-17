@@ -5,12 +5,13 @@ namespace AppBundle\Controller;
 //use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use FOS\RestBundle\Controller\FOSRestController;
+use Symfony\Component\HttpFoundation\Request;
 
 class NoticiasRestController extends FOSRestController {
 
-	public function getNoticiasAction() {
+	public function getNoticiasAction(Request $request) {
 		$em = $this->getDoctrine()->getManager();
-		$noticias = $em->getRepository( 'AppBundle:Noticia' )->getUltimasNoticias();
+		$noticias = $em->getRepository( 'AppBundle:Noticia' )->getNoticiasByPage($request->get('page', 1));
 
 		$vista = $this->view( $noticias,
 			200 )

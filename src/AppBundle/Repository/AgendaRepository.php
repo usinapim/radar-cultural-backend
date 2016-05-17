@@ -12,4 +12,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class AgendaRepository extends EntityRepository
 {
+    private $itemsPorPagina = 10;
+    public function getEventosByPage($page)
+    {
+        $hoy = new \DateTime();
+        $qb = $this->createQueryBuilder('a')
+            ->andWhere('a.activo = true ')
+            ->andWhere(':hoy BETWEEN a.visibleDesde AND a.visibleHasta')
+            ->setParameter('hoy', $hoy )
+            ->setMaxResults($this->itemsPorPagina)
+            ->setFirstResult(($page - 1) * $this->itemsPorPagina)
+            ->orderBy('a.orden', 'ASC')
+            ->orderBy('a.creado', 'ASC')
+        ;
+
+
+        return $qb->getQuery()->getResult();
+    }
 }

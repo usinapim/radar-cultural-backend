@@ -7,6 +7,7 @@ use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class NoticiaType extends AbstractType {
 	/**
@@ -19,7 +20,32 @@ class NoticiaType extends AbstractType {
 			->add( 'resumen' )
 			->add( 'cuerpo', CKEditorType::class )
 			->add( 'orden' )
-			->add( 'visible' )
+			->add( 'visibleDesde',
+				DateTimeType::class,
+				array(
+					'widget' => 'single_text',
+					'format' => 'dd/MM/yyyy',
+					'attr'   => array(
+						'class'           => 'datepicker',
+						'data-dateformat' => 'dd/mm/yy',
+						'placeholder'     => 'Selecciona una fecha'
+					)
+				)
+
+			)
+			->add( 'visibleHasta',
+				DateTimeType::class,
+				array(
+					'widget' => 'single_text',
+					'format' => 'dd/MM/yyyy',
+					'attr'   => array(
+						'class'           => 'datepicker',
+						'data-dateformat' => 'dd/mm/yy',
+						'placeholder'     => 'Selecciona una fecha'
+					)
+				)
+
+			)
 			->add( 'activo' )
 			->add( 'categoriaNoticia',
 				'entity',
